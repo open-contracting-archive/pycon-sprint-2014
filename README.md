@@ -38,7 +38,7 @@ Sprint goals:
 Resources:
 
     - Machine learning talk: http://pyvideo.org/video/2612/enough-machine-learning-to-make-hacker-news-reada
-
+    - Work on manually classifying fields: https://docs.google.com/spreadsheet/ccc?key=0AqLP9fZSKM8jdFg2WGhHQi1QbE54Wml5aDNyaUVDRGc&usp=sharing#gid=0
 
 Data Comparison
 ---------------
@@ -62,3 +62,6 @@ Standard Colaborator
     - TODO: sarah
 
 
+Contributors
+----------------------
+Dan, Eric, and Britton
