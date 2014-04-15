@@ -32,19 +32,19 @@ def get_lang(source_text, key = '', print_meta_data=False):
     returns list of language identifiers
     """
     #set up url request to google translate api
-    url_shell = https://www.googleapis.com/language/translate/v2/detect?key={0}Y&q={1} 
+    url_shell = 'https://www.googleapis.com/language/translate/v2/detect?key={0}&q={1}' 
     url = url_shell.format(key, source_text)
     response = requests.get(url)
 
     #parse response
     data_dict = json.loads(response.text)
-    source_lang = data_dict['data']['detections']['language']
- 
+    source_lang = data_dict['data']['detections'][0][0]['language'] 
+
     if print_meta_data:
         print 'Is detection reliable: {0}'.format(data_dict['data']['detections']['isReliable'])
         print 'Confidence: {0}'.format(data_dict['data']['detections']['confidence'])
 
-    return source_lang
+    return data_dict
  
 
 def get_possible_langs(key = '', target_lang = 'en'):
