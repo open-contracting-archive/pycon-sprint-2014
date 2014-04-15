@@ -40,6 +40,15 @@ Resources:
     - Machine learning talk: http://pyvideo.org/video/2612/enough-machine-learning-to-make-hacker-news-reada
     - Work on manually classifying fields: https://docs.google.com/spreadsheet/ccc?key=0AqLP9fZSKM8jdFg2WGhHQi1QbE54Wml5aDNyaUVDRGc&usp=sharing#gid=0
 
+Setup:
+
+    Mac OS:
+    - brew install gfortran
+    - cd landscape
+    - virtualenv env
+    - env/bin/pip install -r requirements.txt
+    - ipython notebook
+
 Data Comparison
 ---------------
 
