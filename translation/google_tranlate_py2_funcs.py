@@ -23,29 +23,31 @@ def get_trans(source_text, key = '', target_lang = 'en', source_lang = ''):
     """
     #CODE!!
 
-def get_lang(source_text, key = '', print_meta_data=False):
+def get_lang_list(source_text, key = '', print_meta_data=False):
     """
     Inputs:
-    source_text - source text as a string or iterable of strings
+    source_text - source text as iterable of strings
     key - google api key, needed or function will raise and error
 
     returns list of language identifiers
     """
     #set up url request to google translate api
-    url_shell = 'https://www.googleapis.com/language/translate/v2/detect?key={0}&q={1}' 
-    url = url_shell.format(key, source_text)
-    response = requests.get(url)
+    lang_list = []
+    for item in source_text:
+        url_shell = 'https://www.googleapis.com/language/translate/v2/detect?key={0}&q={1}'
+        url = url_shell.format(key, item)
+        response = requests.get(url)
 
-    #parse response
-    data_dict = json.loads(response.text)
-    source_lang = data_dict['data']['detections'][0][0]['language'] 
+        #parse response
+        data_dict = json.loads(response.text)
+        source_lang = data_dict['data']['detections'][0][0]['language']
+        lang_list.append(source_lang)
 
-    if print_meta_data:
-        print 'Is detection reliable: {0}'.format(data_dict['data']['detections']['isReliable'])
-        print 'Confidence: {0}'.format(data_dict['data']['detections']['confidence'])
+        if print_meta_data:
+            print 'Is detection reliable: {0}'.format(data_dict['data']['detections']['isReliable'])
+            print 'Confidence: {0}'.format(data_dict['data']['detections']['confidence'])
 
-    return data_dict
- 
+    return lang_list
 
 def get_possible_langs(key = '', target_lang = 'en'):
     """
