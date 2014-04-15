@@ -23,7 +23,7 @@ def get_trans(source_text, key = '', target_lang = 'en', source_lang = ''):
     """
     #CODE!!
 
-def get_lang(source_text, key = ''):
+def get_lang(source_text, key = '', print_meta_data=False):
     """
     Inputs:
     source_text - source text as a string or iterable of strings
@@ -31,7 +31,21 @@ def get_lang(source_text, key = ''):
 
     returns list of language identifiers
     """
-    #CODE!!! 
+    #set up url request to google translate api
+    url_shell = https://www.googleapis.com/language/translate/v2/detect?key={0}Y&q={1} 
+    url = url_shell.format(key, source_text)
+    response = requests.get(url)
+
+    #parse response
+    data_dict = json.loads(response.text)
+    source_lang = data_dict['data']['detections']['language']
+ 
+    if print_meta_data:
+        print 'Is detection reliable: {0}'.format(data_dict['data']['detections']['isReliable'])
+        print 'Confidence: {0}'.format(data_dict['data']['detections']['confidence'])
+
+    return source_lang
+ 
 
 def get_possible_langs(key = '', target_lang = 'en'):
     """
