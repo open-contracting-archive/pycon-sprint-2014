@@ -10,7 +10,7 @@ get_possible_langs: returns languages available to translate to and from
 import json
 import requests
 
-def get_trans(source_text, key = '', target_lang = 'en', source_lang = ''):
+def get_trans_(source_text, key = '', target_lang = 'en', source_lang =''):
     """
     Inputs:
     source_text - source text as a string or iterable of strings
@@ -21,7 +21,15 @@ def get_trans(source_text, key = '', target_lang = 'en', source_lang = ''):
 
     returns dictionary with keys of source_text, values of translated text
     """
-    #CODE!!
+    
+    url_shell = 'https://www.googleapis.com/language/translate/v2?key={0}&source={1}&target={2}&q={3}'
+    url = url_shell.format(key, source_lang, target_lang, source_text)
+    
+    response = requests.get(url)    
+    
+    data_dict = json.loads(response)
+    return data_dict
+    
 
 def get_lang_list(source_text, key = '', print_meta_data=False):
     """
