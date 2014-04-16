@@ -44,8 +44,8 @@ def get_lang_list(source_text, key = '', print_meta_data=False):
     url_shell = 'https://www.googleapis.com/language/translate/v2/detect?key={0}&q={1}'
     url = url_shell.format(key, source_text)
     response = requests.get(url)
-    lang_text = json.loads(response.text)
-    source_lang = data_dict['data']['detections'][0][0]['language']
+    lang_json= json.loads(response.text)
+    source_lang = lang_json['data']['detections'][0][0]['language']
 
 #        if print_meta_data:
 #            print 'Is detection reliable: {0}'.format(data_dict['data']['detections']['isReliable'])
