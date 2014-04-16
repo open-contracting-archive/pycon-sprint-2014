@@ -30,6 +30,8 @@ def get_trans_(source_text, key = '', target_lang = 'en', source_lang =''):
     url = url_shell.format(key, source_lang, target_lang, source_text)
     response = requests.get(url)    
     trans_text = json.loads(response.text)
+    for key in trans_text.keys():
+        if key == "error":raise Exception(" Error.The Json returned from the google  api has 'error' as it's key value")
     return trans_text
     
 
@@ -77,4 +79,7 @@ def get_possible_langs(key = '', target_lang = 'en'):
     return data_dict_out
 
 #just for a quick test
-#print transform_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
+print transform_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
+#print get_lang_list("el rojo y el blanco", key = 'AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE')
+#this throws an eception
+#print get_trans_("adsf asdfas d d d d d d ","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE",'en','en')
