@@ -79,7 +79,7 @@ def get_possible_langs(key = '', target_lang = 'en'):
     return data_dict_out
 
 #just for a quick test
-print transform_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
+#print transform_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
 #print get_lang_list("el rojo y el blanco", key = 'AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE')
-#this throws an eception
+#this throws an exception
 #print get_trans_("adsf asdfas d d d d d d ","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE",'en','en')
