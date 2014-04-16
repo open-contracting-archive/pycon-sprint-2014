@@ -12,8 +12,8 @@ import requests
 
 def transform_source(source_text, key = ''  ):
     lang = get_lang_list(source_text, key )
-    return get_trans_(source_text, key, source_lang =lang)
-#    get_lang_list():
+    trans =  get_trans_(source_text, key, source_lang =lang)
+    return trans['data']['translations'][0]['translatedText']
 
 def get_trans_(source_text, key = '', target_lang = 'en', source_lang =''):
     """
@@ -76,3 +76,5 @@ def get_possible_langs(key = '', target_lang = 'en'):
 
     return data_dict_out
 
+#just for a quick test
+#print transform_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
