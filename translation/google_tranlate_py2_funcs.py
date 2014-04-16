@@ -11,7 +11,8 @@ import json
 import requests
 
 def transform_source(source_text, key = ''  ):
-    pass
+    lang = get_lang_list(source_text, key )
+    return  get_trans_(source_text, key = key target_lang = 'en', source_lang =lang)
 #    get_lang_list():
 
 def get_trans_(source_text, key = '', target_lang = 'en', source_lang =''):
