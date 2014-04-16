@@ -31,7 +31,7 @@ def get_trans_(source_text, key = '', target_lang = 'en', source_lang =''):
     response = requests.get(url)    
     trans_text = json.loads(response.text)
     for key in trans_text.keys():
-        if key == "error":raise Exception(" Error.The Json returned from the google  api has 'error' as it's key value")
+        if key == "error":raise Exception( "Bad source string.The Json returned from the google  api has 'error' as it's key value")
     return trans_text
     
 
