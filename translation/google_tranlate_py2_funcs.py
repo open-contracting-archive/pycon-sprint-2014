@@ -10,6 +10,10 @@ get_possible_langs: returns languages available to translate to and from
 import json
 import requests
 
+def transform_source(source_text, key = ''  ):
+    pass
+#    get_lang_list():
+
 def get_trans_(source_text, key = '', target_lang = 'en', source_lang =''):
     """
     Inputs:
@@ -21,14 +25,11 @@ def get_trans_(source_text, key = '', target_lang = 'en', source_lang =''):
 
     returns dictionary with keys of source_text, values of translated text
     """
-    
     url_shell = 'https://www.googleapis.com/language/translate/v2?key={0}&source={1}&target={2}&q={3}'
     url = url_shell.format(key, source_lang, target_lang, source_text)
-    
     response = requests.get(url)    
-    
-    data_dict = json.loads(response)
-    return data_dict
+    trans_text = json.loads(response.text)
+    return trans_text
     
 
 def get_lang_list(source_text, key = '', print_meta_data=False):
@@ -40,22 +41,17 @@ def get_lang_list(source_text, key = '', print_meta_data=False):
     returns list of language identifiers
     """
     #set up url request to google translate api
-    lang_list = []
-    for item in source_text:
-        url_shell = 'https://www.googleapis.com/language/translate/v2/detect?key={0}&q={1}'
-        url = url_shell.format(key, item)
-        response = requests.get(url)
+    url_shell = 'https://www.googleapis.com/language/translate/v2/detect?key={0}&q={1}'
+    url = url_shell.format(key, source_text)
+    response = requests.get(url)
+    lang_text = json.loads(response.text)
+    source_lang = data_dict['data']['detections'][0][0]['language']
 
-        #parse response
-        data_dict = json.loads(response.text)
-        source_lang = data_dict['data']['detections'][0][0]['language']
-        lang_list.append(source_lang)
-
-        if print_meta_data:
-            print 'Is detection reliable: {0}'.format(data_dict['data']['detections']['isReliable'])
-            print 'Confidence: {0}'.format(data_dict['data']['detections']['confidence'])
-
-    return lang_list
+#        if print_meta_data:
+#            print 'Is detection reliable: {0}'.format(data_dict['data']['detections']['isReliable'])
+#            print 'Confidence: {0}'.format(data_dict['data']['detections']['confidence'])
+#
+    return source_lang
 
 def get_possible_langs(key = '', target_lang = 'en'):
     """
