@@ -92,9 +92,23 @@ def find_two_words(string):
     return best
 
 
+def normalize_string(string_or_sequence_of):
+    """
+    Splits a string or sequence of strings into a list of words split on spaces.
+    """
+    if isinstance(string_or_sequence_of, basestring):
+        string = string_or_sequence_of.strip().lower()
+        return re.split('([^a-z]+)', string)
+    else:
+        result = []
+        for string in string_or_sequence_of:
+            result.extend( normalize_string(string) )
+        return result
+
+
 def split_words(string):
     """
-    Generates lists of multiple wordnet synsets.
+    Returns a set of multiple wordnet synsets.
     This assumes any sequence of letters is only at max two words.
 
     Examples:
@@ -111,11 +125,8 @@ def split_words(string):
         > list( split_words("contract sequence number") )
         ['contract', 'sequence', 'number']
     """
-    string = string.strip().lower()
-    
-    subs = re.split('([^a-z]+)', string.lower())
-    for sub in subs:
-        
+    results = set()
+    for sub in normalize_string(string):
         ## If it's not a word, well we don't care about it.
         if not re.match('[a-z]+', sub):
             continue
@@ -124,20 +135,47 @@ def split_words(string):
         
         ## If it is a word, yay!
         if syns:
-            yield [x.name for x in syns]
+            for x in syns:
+                results.add( x.name )
         
         ## If it's not a word, but it's 3 or less letters it's probably not two words, so just yield that.
         elif len(sub) <= 3:
-            yield sub
+            results.add( sub )
         
         ## Otherwise let's try to split it into two words
         else:
             pair = find_two_words(sub)
             if pair:
-                yield pair[0]
-                yield pair[1]
+                results.update( pair[0] )
+                results.update( pair[1] )
             
             ## No dice, okay well let's just yield it
             else:
-                yield sub
+                results.add( sub )
+    return results
 
+def likeness(a, b):
+    """
+    Returns how alike words found in the list a and words found in the list b are.
+    """
+    a_set = split_words(a)
+    b_set = split_words(b)
+    union = a_set.union(b_set)
+    intersection = a_set.intersection(b_set)
+    return float(len(intersection)) / len(union)
+
+def subsetness(a, b):
+    """
+    Returns how much a is in b as a coefficient, 0 - 1.
+    
+    0: a is not in b at all.
+    1: all of the items in a are in b as well.
+    """
+    a_set = split_words(a)
+    b_set = split_words(b)
+    sz = len(a_set)
+    hits = 0
+    for obj in a_set:
+        if obj in b_set:
+            hits += 1
+    return float(hits) / float(sz)
