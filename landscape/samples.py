@@ -9,6 +9,8 @@ resources = {
     'Canada': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=2',
     'Mexico': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=10',
     'EU': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=11',
+    'Moldova': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=15',
+    'UNOPS': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=14',
 }
 
 name_key = "English Name"
