@@ -1,16 +1,19 @@
-import csv, os
+import csv, os, itertools
 import requests
 import hashlib
 
 resources = {
-    'UK': 'https://docs.google.com/spreadsheet/ccc?key=0AqLP9fZSKM8jdFg2WGhHQi1QbE54Wml5aDNyaUVDRGc&output=csv&gid=0',
-    'Canada': 'https://docs.google.com/spreadsheet/ccc?key=0AqLP9fZSKM8jdFg2WGhHQi1QbE54Wml5aDNyaUVDRGc&output=csv&gid=2',
-    'Mexico': 'https://docs.google.com/spreadsheet/ccc?key=0AqLP9fZSKM8jdFg2WGhHQi1QbE54Wml5aDNyaUVDRGc&output=csv&gid=4',
-    'Georgia': 'https://docs.google.com/spreadsheet/ccc?key=0AqLP9fZSKM8jdFg2WGhHQi1QbE54Wml5aDNyaUVDRGc&output=csv&gid=1'
+    'Keywords': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=12',
+    'UK': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=0',
+    'Georgia': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=1',
+    'Canada': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=2',
+    'Mexico': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=10',
+    'EU': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=11',
 }
 
 name_key = "English Name"
-group_key = "Group"
+phase_key = "Phase"
+entity_key = "Entity"
 
 def get_resource(name, cache=True):
     url = resources[name]
@@ -38,12 +41,35 @@ def get_data(name, cache=True):
             header = row
     return data
 
-def load_samples(cache=True):
+def set_of_values(s):
+    result = set()
+    for s in name_key.split(','):
+        s = s.strip()
+        if s:
+            result.add()
+
+def get_concepts(line):
+    groups = line[entity_key] or '?'
+    groups = set([x.strip() for x in groups.split(',') if x.strip()])
+    return groups
+    #phases = set([x.strip() for x in phases.split(',') if x.strip()])
+    #return ["%s:%s" % pair for pair in itertools.product(phases, groups)]
+
+def load_samples(names, cache=True):
     samples = {}
-    for name in resources:
+    for name in names:
         data = get_data(name, cache=cache)
+        last_name = None
         for line in data:
-            header = line[name_key]
-            concept = line[group_key] or '?'
-            samples.setdefault(concept, []).append( header )
+            header = line[name_key] or last_name
+            last_name = header
+            for concept in get_concepts(line):
+                samples.setdefault(concept, []).append( header )
     return samples
+
+def load_headers(name, cache=True):
+    results = []
+    for line in get_data(name, cache=cache):
+        if line[name_key]:
+            results.append(line[name_key])
+    return results

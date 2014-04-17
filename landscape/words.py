@@ -91,11 +91,11 @@ def find_two_words(string):
             best_score = score
     return best
 
+
 def split_words(string):
     """
     Generates lists of multiple wordnet synsets.
     This assumes any sequence of letters is only at max two words.
-    If there is a space in it, we assume it's already split and just yield that.
 
     Examples:
 
@@ -110,13 +110,8 @@ def split_words(string):
 
         > list( split_words("contract sequence number") )
         ['contract', 'sequence', 'number']
-
     """
     string = string.strip().lower()
-    
-    if ' ' in string:
-        for obj in string.split():
-            yield obj.lower()
     
     subs = re.split('([^a-z]+)', string.lower())
     for sub in subs:
@@ -125,9 +120,11 @@ def split_words(string):
         if not re.match('[a-z]+', sub):
             continue
         
+        syns = wn.synsets(sub)
+        
         ## If it is a word, yay!
-        if is_word(sub):
-            yield sub
+        if syns:
+            yield [x.name for x in syns]
         
         ## If it's not a word, but it's 3 or less letters it's probably not two words, so just yield that.
         elif len(sub) <= 3:
@@ -143,3 +140,4 @@ def split_words(string):
             ## No dice, okay well let's just yield it
             else:
                 yield sub
+
