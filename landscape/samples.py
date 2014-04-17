@@ -50,23 +50,21 @@ def set_of_values(s):
         if s:
             result.add()
 
-def get_concepts(line):
-    groups = line[entity_key] or '?'
-    groups = set([x.strip() for x in groups.split(',') if x.strip()])
-    return groups
-    #phases = set([x.strip() for x in phases.split(',') if x.strip()])
-    #return ["%s:%s" % pair for pair in itertools.product(phases, groups)]
+def get_entities(line):
+    entities = line[entity_key] or '?'
+    entities = set([x.strip() for x in entities.split(',') if x.strip()])
+    return entities
 
 def load_samples(names, cache=True):
-    samples = {}
+    samples = []
     for name in names:
         data = get_data(name, cache=cache)
         last_name = None
         for line in data:
             header = line[name_key] or last_name
             last_name = header
-            for concept in get_concepts(line):
-                samples.setdefault(concept, []).append( header )
+            for entity in get_entities(line):
+                samples.append({'header': header, 'entity': entity, 'sample': name})
     return samples
 
 def load_headers(name, cache=True):
