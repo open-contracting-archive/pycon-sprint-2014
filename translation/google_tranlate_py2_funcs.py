@@ -85,6 +85,4 @@ def get_possible_langs(key = '', target_lang = 'en'):
 
     return data_dict_out
 
-#just for a quick test - willl remove once proper unit tests are setup
-print translate_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
 
