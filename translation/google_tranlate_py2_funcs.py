@@ -10,7 +10,7 @@ get_possible_langs: returns languages available to translate to and from
 import json
 import requests
 
-def transform_source(source_text, key=None):
+def translate_source(source_text, key=None):
     if not key:
         raise Exception( "You dont have a key")
     lang = get_lang_list(source_text, key)
@@ -86,8 +86,5 @@ def get_possible_langs(key = '', target_lang = 'en'):
     return data_dict_out
 
 #just for a quick test - willl remove once proper unit tests are setup
-#print transform_source("el rojo y el blanco")
-#print transform_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
-#print get_lang_list("el rojo y el blanco", key = 'AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE')
-#this throws an exception
-#print get_trans_("adsf asdfas d d d d d d ","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE",'en','en')
+print translate_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
+
