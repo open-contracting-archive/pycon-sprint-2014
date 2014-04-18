@@ -2,7 +2,7 @@
 Simple funtions to use google tranlate API from a python script
 
 functions included:
-translate source: returns tranlsated text without needing to specify the source language.
+translate_source: returns tranlsated text without needing to specify the source language.
 get_trans: returns tranlsated text
 get_lang: returns language of inputted text
 get_possible_langs: returns languages available to translate to and from
