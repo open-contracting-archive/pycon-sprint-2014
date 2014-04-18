@@ -12,6 +12,13 @@ import json
 import requests
 
 def translate_source(source_text, key=None):
+    """
+    Inputs:
+    source_text - source text as a string 
+    key - google api key, needed or function will raise and error
+
+    returns  translated string
+    """
     if not key:
         raise Exception( "You dont have a key")
     lang = get_lang_list(source_text, key)
@@ -21,7 +28,7 @@ def translate_source(source_text, key=None):
 def get_trans_(source_text, key=None , source_lang='',target_lang='en' ):
     """
     Inputs:
-    source_text - source text as a string or iterable of strings
+    source_text - source text as a string 
     key - google api key, needed or function will raise and error
     target_lang - target language, defaults to 'en' - english
     source_lang - source language, defaults to '' (detect), can also be entered
@@ -44,7 +51,7 @@ def get_trans_(source_text, key=None , source_lang='',target_lang='en' ):
 def get_lang_list(source_text, key=None, print_meta_data=False):
     """
     Inputs:
-    source_text - source text as iterable of strings
+    source_text - source text as a string
     key - google api key, needed or function will raise and error
 
     returns list of language identifiers
