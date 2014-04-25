@@ -19,7 +19,7 @@ Many thanks to all our contributors from PyCon 2014. In alphabetical order:
 * Brantley Harris
 * Matt Lamberti
 * Dan Langer
-* Herb Linchberg
+* Herb Lainchbury
 * Teddy McWilliams
 * Aaron Rothenberg
 * David Street
