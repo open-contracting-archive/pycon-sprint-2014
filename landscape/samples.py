@@ -1,6 +1,7 @@
 import csv, os, itertools
 import requests
 import hashlib
+from collections import defaultdict
 
 resources = {
     'Keywords': 'https://docs.google.com/spreadsheet/ccc?key=0AvMxyqIb0BZfdEdjdnVWc0ZLeERCeDNERVRiRTVXZkE&output=csv&gid=12',
@@ -66,6 +67,44 @@ def load_samples(names, cache=True):
             for entity in get_entities(line):
                 samples.append({'header': header, 'entity': entity, 'sample': name})
     return samples
+
+def load_samples_by_entity(names, cache=True, group_together = True):
+    samples = defaultdict(list)
+
+    """
+        Returns a dict of the form:
+
+        {
+            'buyer' : [
+                    ['header_name_1_uk','header_name_2_uk',...] #headers for 'buyer' entity in UK file
+                    ['header_name_1_md','header_name_2_md',...] #headers for 'buyer' entity in MD file
+                    ...
+                ],
+            'contract' : [
+                #...
+            ],
+            ...
+        }
+    """
+
+    for name in names:
+        data = get_data(name, cache=cache)
+
+        headers_for_concept = defaultdict(list)
+
+        for line in data:
+            header = line[name_key] or None
+            if not header:
+                continue
+            last_name = header
+            for concept in get_concepts(line):
+                if not header in headers_for_concept[concept]:
+                    headers_for_concept[concept].append(header)
+
+        for concept,headers in headers_for_concept.items():
+            samples[concept].append(headers)
+
+    return dict(samples)
 
 def load_headers(name, cache=True):
     results = []
