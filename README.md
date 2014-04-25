@@ -6,8 +6,6 @@ repos where we can maintain them as the seperate libraries they should be. Any
 questions or suggestions, get in touch:
 https://groups.google.com/a/webfoundation.org/forum/#!forum/public-ocds-dev
 
-Contributors
-----------------------
 Many thanks to all our contributors from PyCon 2014. In alphabetical order:
 
 * Eric Canen
