@@ -6,6 +6,38 @@ repos where we can maintain them as the seperate libraries they should be. Any
 questions or suggestions, get in touch:
 https://groups.google.com/a/webfoundation.org/forum/#!forum/public-ocds-dev
 
+Contributors
+----------------------
+Many thanks to all our contributors from PyCon 2014. In
+alphanetical order:
+
+* Eric Canen
+* Aaron Cohen
+* Andreas Dewes
+* Noé Domínguez Porras
+* Simon Frid
+* Michael Glaude
+* Bryan Gorges
+* Brittain Hard
+* Brantley Harris
+* Matt Lamberti
+* Dan Langer
+* Herb Linchberg
+* Teddy McWilliams
+* Aaron Rothenberg
+* David Street
+* Nick Zaccardi
+
+With additional thanks to: Jean-Paul, Ian Ward, Olivier, Bob Lannon for their
+tips and pointers along the way.
+
+From the open contracting data team:
+
+* Sarah Bird
+* Ana Branducescu
+* Tim Davies
+* Michael Roberts
+
 
 Open Contracting Data
 ===================
@@ -71,34 +103,3 @@ Use Case Comparison
 
 Collecting and documenting use cases for Open Contracting data and providing a
 tool for people to submit new use cases.
-
-
-Contributors
-----------------------
-Many thanks to all our contributors from PyCon 2014 who've been amazing. In
-alphanetical order:
-
-* Eric Canen
-* Aaron Cohen
-* Andreas Dewes
-* Noé Domínguez Porras
-* Simon Frid
-* Michael Glaude
-* Bryan Gorges
-* Brittain Hard
-* Brantley Harris
-* Matt Lamberti
-* Dan Langer
-* Herb Linchberg
-* Teddy McWilliams
-* Aaron Rothenberg
-* David Street
-* Nick Zaccardi
-
-With additional thanks to: Jean-Paul, Ian Ward, Olivier, Bob Lannon for their
-tips and pointers along the way.
-
-Sarah Bird
-Ana Branducescu
-Tim Davies
-Michael Roberts
