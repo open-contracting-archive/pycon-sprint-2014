@@ -8,8 +8,7 @@ https://groups.google.com/a/webfoundation.org/forum/#!forum/public-ocds-dev
 
 Contributors
 ----------------------
-Many thanks to all our contributors from PyCon 2014. In
-alphanetical order:
+Many thanks to all our contributors from PyCon 2014. In alphabetical order:
 
 * Eric Canen
 * Aaron Cohen
@@ -28,8 +27,7 @@ alphanetical order:
 * David Street
 * Nick Zaccardi
 
-With additional thanks to: Jean-Paul, Ian Ward, Olivier, Bob Lannon for their
-tips and pointers along the way.
+And to Jean-Paul, Ian Ward, Olivier, Bob Lannon for their time, tips and pointers along the way.
 
 From the open contracting data team:
 
