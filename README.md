@@ -10,7 +10,6 @@ Four Initiatives for this sprint:
     - Datamap Landscape
     - Data Comparison
     - Usecase Documentation
-    - Standard Colaborator
 
 Resources:
     
@@ -49,28 +48,50 @@ Setup:
     - env/bin/pip install -r requirements.txt
     - ipython notebook
 
-Data Comparison
----------------
+Open Data Comparison
+---------------------
 
-    The data comparison is a site based on open-comparison.  Our goals are to
-    make it useable to find and compare datasets.
+The data comparison is a site based on open-comparison.  Our goals are to
+make it useable to find and compare datasets.
 
     - Bugfixing
     - Make community usable
 
+Use Case Comparison
+-------------------
 
-Usecase Documentation
-----------------------
-    
-    - TODO: tim
+Collecting and documenting use cases for Open Contracting data and providing a
+tool for people to submit new use cases.
 
 
-Standard Colaborator
-----------------------
-
-    - TODO: sarah
 
 
 Contributors
 ----------------------
-Dan, Eric, and Britton
+Many thanks to all our contributors from PyCon 2014 who've been amazing. In
+alphanetical order:
+
+Eric Canen
+Aaron Cohen
+Andreas Dewes
+Noé Domínguez Porras
+Simon Frid
+Michael Glaude
+Bryan Gorges
+Brittain Hard
+Brantley Harris
+Matt Lamberti
+Dan Langer
+Herb Linchberg
+Teddy McWilliams
+Aaron Rothenberg
+David Street
+Nick Zaccardi
+
+With additional thanks to: Jean-Paul, Ian Ward, Olivier, Bob Lannon for their
+tips and pointers along the way.
+
+Sarah Bird
+Ana Branducescu
+Tim Davies
+Michael Roberts
