@@ -2,6 +2,7 @@
 Simple funtions to use google tranlate API from a python script
 
 functions included:
+translate_source: returns tranlsated text without needing to specify the source language.
 get_trans: returns tranlsated text
 get_lang: returns language of inputted text
 get_possible_langs: returns languages available to translate to and from
@@ -10,7 +11,14 @@ get_possible_langs: returns languages available to translate to and from
 import json
 import requests
 
-def transform_source(source_text, key=None):
+def translate_source(source_text, key=None):
+    """
+    Inputs:
+    source_text - source text as a string 
+    key - google api key, needed or function will raise and error
+
+    returns  translated string
+    """
     if not key:
         raise Exception( "You dont have a key")
     lang = get_lang_list(source_text, key)
@@ -20,7 +28,7 @@ def transform_source(source_text, key=None):
 def get_trans_(source_text, key=None , source_lang='',target_lang='en' ):
     """
     Inputs:
-    source_text - source text as a string or iterable of strings
+    source_text - source text as a string 
     key - google api key, needed or function will raise and error
     target_lang - target language, defaults to 'en' - english
     source_lang - source language, defaults to '' (detect), can also be entered
@@ -43,7 +51,7 @@ def get_trans_(source_text, key=None , source_lang='',target_lang='en' ):
 def get_lang_list(source_text, key=None, print_meta_data=False):
     """
     Inputs:
-    source_text - source text as iterable of strings
+    source_text - source text as a string
     key - google api key, needed or function will raise and error
 
     returns list of language identifiers
@@ -85,9 +93,4 @@ def get_possible_langs(key = '', target_lang = 'en'):
 
     return data_dict_out
 
-#just for a quick test - willl remove once proper unit tests are setup
-#print transform_source("el rojo y el blanco")
-#print transform_source("el rojo y el blanco","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE")
-#print get_lang_list("el rojo y el blanco", key = 'AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE')
-#this throws an exception
-#print get_trans_("adsf asdfas d d d d d d ","AIzaSyCZBVx2a3tzKTW9TmTXoB3KJ_Z7T9PEspE",'en','en')
+
