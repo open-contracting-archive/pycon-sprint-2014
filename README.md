@@ -1,3 +1,12 @@
+**Repo closed as of April 25th 2014.**
+
+This was a convenient place for us to all push code to during
+the PyCon 2014 sprints. Different pieces are being moved into seperate
+repos where we can maintain them as the seperate libraries they should be. Any
+questions or suggestions, get in touch:
+https://groups.google.com/a/webfoundation.org/forum/#!forum/public-ocds-dev
+
+
 Open Contracting Data
 ===================
 
@@ -7,19 +16,19 @@ understand where and how money flows around the world.
 
 Four Initiatives for this sprint:
 
-    - Datamap Landscape
-    - Data Comparison
-    - Usecase Documentation
+- Datamap Landscape
+- Data Comparison
+- Usecase Documentation
 
 Resources:
-    
-    - Hackpads with more information: https://opencontractingdata.hackpad.com/
-    - Existing datasets: http://ocds.stage.aptivate.org/opendatacomparison/datasets/
+
+- Hackpads with more information: https://opencontractingdata.hackpad.com/
+- Existing datasets: http://ocds.stage.aptivate.org/opendatacomparison/datasets/
 
 
 Data Landscape
 ---------------
-    
+
 Creating an overall understanding about the types and format of existing
 published contracting data.
 
@@ -64,29 +73,27 @@ Collecting and documenting use cases for Open Contracting data and providing a
 tool for people to submit new use cases.
 
 
-
-
 Contributors
 ----------------------
 Many thanks to all our contributors from PyCon 2014 who've been amazing. In
 alphanetical order:
 
-Eric Canen
-Aaron Cohen
-Andreas Dewes
-Noé Domínguez Porras
-Simon Frid
-Michael Glaude
-Bryan Gorges
-Brittain Hard
-Brantley Harris
-Matt Lamberti
-Dan Langer
-Herb Linchberg
-Teddy McWilliams
-Aaron Rothenberg
-David Street
-Nick Zaccardi
+* Eric Canen
+* Aaron Cohen
+* Andreas Dewes
+* Noé Domínguez Porras
+* Simon Frid
+* Michael Glaude
+* Bryan Gorges
+* Brittain Hard
+* Brantley Harris
+* Matt Lamberti
+* Dan Langer
+* Herb Linchberg
+* Teddy McWilliams
+* Aaron Rothenberg
+* David Street
+* Nick Zaccardi
 
 With additional thanks to: Jean-Paul, Ian Ward, Olivier, Bob Lannon for their
 tips and pointers along the way.
