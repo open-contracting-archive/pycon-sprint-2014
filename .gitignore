@@ -1,3 +1,4 @@
 *.pyc
 .*
 env
+tests/api_key.py
