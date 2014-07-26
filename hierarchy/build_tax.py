@@ -56,7 +56,5 @@ def root_level_builder(filename):
         for child in data[key].children:
             data[key].bag_of_words.update([word.lower() for word in child.text.split(' ')])
 
-    import ipdb; ipdb.set_trace();
-
 if __name__  == "__main__":
     root_level_builder(sys.argv[1])
