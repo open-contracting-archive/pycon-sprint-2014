@@ -3,13 +3,14 @@ import os
 import sys
 
 class Node(object):
-    __slots__ = ['id', 'parent', 'children', 'text']
+    __slots__ = ['id', 'parent', 'children', 'text', 'bag_of_words']
 
-    def __init__(self, id, text, parent='', children=[]):
+    def __init__(self, id, text, parent='', children=[], bag_of_words=set()):
         self.id = id
         self.text = text
         self.parent = parent
         self.children = children
+        self.bag_of_words = bag_of_words
 
     def __str__(self):
         return "id: %s\ntext: '%s'\nparent: '%s'\nchildren:%s\n" % (self.id, self.text,
@@ -51,6 +52,11 @@ def root_level_builder(filename):
         cur_len += 1
     print "%d root cats" % len(data)
 
+    for key in data.keys():
+        for child in data[key].children:
+            data[key].bag_of_words.update([word.lower() for word in child.text.split(' ')])
+
+    import ipdb; ipdb.set_trace();
 
 if __name__  == "__main__":
     root_level_builder(sys.argv[1])
