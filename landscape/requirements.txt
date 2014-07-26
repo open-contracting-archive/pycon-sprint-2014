@@ -2,3 +2,8 @@ nltk
 numpy
 scipy
 scikit-learn
+pyzmq
+tornado
+jinja2
+ipython
+ipdb

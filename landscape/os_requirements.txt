@@ -1,2 +1,2 @@
 #!/usr/bin/env python  
-sudo apt-get install python2.7-dev libblas-dev liblapack-dev gfortran
+sudo apt-get install python2.7-dev libblas-dev liblapack-dev gfortran libzmq-dev
