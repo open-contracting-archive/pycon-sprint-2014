@@ -16,12 +16,11 @@ class Node(object):
                                                                     self.parent,
                                                                     self.children)
 
-
-def bottom_up_builder():
+def root_level_builder(filename):
     data = {}
     records = []
     #TODO: cmdline args filename
-    with open(sys.argv[1]) as csvfile:
+    with open(filename) as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
         #skip code name rows
         print reader.next();
@@ -54,5 +53,4 @@ def bottom_up_builder():
 
 
 if __name__  == "__main__":
-    bottom_up_builder()
-
+    root_level_builder(sys.argv[1])
